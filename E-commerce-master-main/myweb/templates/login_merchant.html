@@ -1,0 +1,443 @@
+
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    <title>Registration Form in HTML CSS</title>
+    {% comment %} <link rel="stylesheet" href="main.css"> {% endcomment %}
+    <link rel="stylesheet" type ="text/css" href="{% static 'mycss/form.css' %}"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script>
+      $(document).ready(function(){
+         $('.chkval').click(function(){
+            var txt="";
+            $('.chkval:checked').each(function(){
+                txt+=$(this).val()+","
+            });
+            txt=txt.substring(0,txt.length-1)
+            $('#txtval').val(txt)
+         });
+      });
+    </script>
+
+  </head>
+  <body>
+    {% comment %} <h1>{{tempmenuname}}</h1> {% endcomment %}
+    {% comment %} {{tempmenuname}} {% endcomment %}
+    
+    <form action="contact" method="post" class="form">
+      {% csrf_token %}
+
+    <section  class="container row page_one">
+      <header>Tell us about yourself</header>
+      <div class="uppertext">
+        <div class="introtext">
+          What’s the best way for employers to contact you?
+        </div>
+        <div class="supporttext">
+          We suggest including an email and phone number.
+        </div>
+      </div>
+     
+        <div class="input-box row names">
+        <div class="col-6 firstname">
+          <label>First Name</label>
+          <input name="dname" type="text" placeholder="Enter first name"   />
+        </div>
+        <div class="col-6 surname">
+          <label>Surname</label>
+          <input name="dsurname" type="text" placeholder="Enter surname" required />
+        </div>
+      </div>
+
+      <div class="input-box row address">
+        <div class="col-4 city ">
+          <label>City</label>
+          <input name="dcity" type="text" placeholder="e.g. New Delhi" required />
+        </div>
+        <div class="col-4 country">
+          <label>Country</label>
+          <input name="dcountry" type="text" placeholder="e.g. India" required />
+        </div>
+
+        <div class="col-4 pincode" >
+          <label>Pin-Code</label>
+          <input name="dpincode" type="text" placeholder="e.g. 411043" required />
+        </div>
+      </div>
+
+      <div class="input-box row contact">
+        <div class="col-6 phonenum">
+          <label>Phone</label>
+          <input name="dphoneno" type="text" placeholder="Enter phone number" required />
+        </div>
+        <div class="col-6 email">
+          <label>Email</label>
+          <input name="demail" type="text" placeholder="Enter email" required />
+        </div>
+      </div>
+
+      <div class="input-box row desc">
+        <div class="col-6 desc">
+          <label>Short Description</label>
+          <input name="desc" type="desc" placeholder="Enter Description" required />
+        </div>
+      </div>
+
+        <div  style="margin-top: 30px;" class="col-md-4 offset-md-4 next">
+          <button>Next</button>
+        </div>
+
+    </section>
+
+    <section style="display: none;" class="container row page_two">
+        <header>Education</header>
+        <div class="uppertext">
+          <div class="introtext">Tell us about your education</div>
+          <div class="supporttext">
+            Enter your education experience so far, even if you are a current
+            student or did not graduate.
+          </div>
+        </div>
+          <div class="data" id="data">
+          <div class="input-box row names">
+            <div class="col-6 sclname">
+              <label>School Name</label>
+              <input name="dschool" type="text" placeholder="Enter school name" required />
+            </div>
+            <div class="col-6 scl_loc">
+              <label>College Name</label>
+              <input name="dcollege" type="text" placeholder="Enter College name" required />
+            </div>
+          </div>
+  
+          <div class="input-box row">
+            <div class="col-6 degree">
+              <label>Degree</label>
+              <input name="ddegree" type="text" placeholder="Enter Degree" required />
+            </div>
+            <div class="col-6 graduatedate">
+              <label>Graduation Date</label>
+              <input name="dmonth" type="month" placeholder="Month" />
+            </div>
+          </div>
+        </div>
+        <div class="row buttons">
+          <div class="col-md-4 prev">
+            <button>Previous</button>
+          </div>
+  
+          <div class="col-md-4 offset-md-4 next">
+            <button>Next</button>
+          </div>
+        </div>
+      </section>
+
+      <section style="display: none;" class="container row page_three">
+        <header>Professional Experience</header>
+        <div class="uppertext">
+          <div class="introtext">
+              Tell us about your experience
+          </div>
+          <div class="supporttext">
+              Start with your most recent experience and work backward.
+          </div>
+        </div>
+          <div class="introtext">
+            Experience-A
+        </div>
+          <div class="input-box row post">
+          <div class="col-6 post">
+            <label>What was your Position</label>
+            <input name="dposition" type="text" placeholder="Similar to job title that bext describes the work you did" required />
+          </div>
+          <div class="col-6 surname">
+            <label>Who did you do this for ?</label>
+            <input name="dcompany" type="text" placeholder="Person,Organisation,company or family you worked for " required />
+          </div>
+        </div>
+  
+        <div class="input-box row address">
+          <div class="col-6 city ">
+            <label>City</label>
+            <input name="dc1" type="text" placeholder="e.g. New Delhi" required />
+          </div>
+          <div class="col-6 country">
+            <label>Country</label>
+            <input name="dcc1" type="text" placeholder="e.g. India" required />
+          </div>
+        </div>
+  
+        <div class="row duration">
+          <div class="col-md-4 startDate " style="
+          margin-top: 25px ">
+            <label>Start Date</label>
+            <input name="dm1" type="month" placeholder="Month">
+          </div>
+  
+          <div class="col-md-4 offset-md-4 endDate " style="
+          margin-top: 25px ">
+            <label>End Date</label>
+            <input name="dm2" type="month" placeholder="Month">
+          </div>
+        </div>
+        <hr>
+        <div class="introtext">
+        </div>
+          <!-- Experience-B
+     
+        <div class="input-box row post">
+          <div class="col-6 post">
+            <label>What was your Position</label>
+            <input name="dtitle" type="text" placeholder="Similar to job title that bext describes the work you did" required />
+          </div>
+          <div class="col-6 surname">
+            <label>Who did you do this for ?</label>
+            <input name="dcompany" type="text" placeholder="Person,Organisation,company or family you worked for " required />
+          </div>
+        </div>
+  
+        <div class="input-box row address">
+          <div class="col-6 city ">
+            <label>City</label>
+            <input name="d" type="text" placeholder="e.g. New Delhi" required />
+          </div>
+          <div class="col-6 country">
+            <label>Country</label>
+            <input name="d" type="text" placeholder="e.g. India" required />
+          </div>
+        </div> -->
+  
+        <!-- <div class="row duration">
+          <div class="col-md-4 startDate " style="
+          margin-top: 25px ">
+            <label>Start Date</label>
+            <input name="d" type="month" placeholder="Month">
+          </div>
+  
+          <div class="col-md-4 offset-md-4 endDate " style="
+          margin-top: 25px ">
+            <label>End Date</label>
+            <input name="d" type="month" placeholder="Month">
+          </div>
+        </div> -->
+        <div class="row buttons">
+          <div class="col-md-4 prev">
+            <button>Previous</button>
+          </div>
+          {% comment %} <div class="col-md-4 offset-md-4 next">
+            <button>Next</button>
+          </div> {% endcomment %}
+           <div class="col-12">
+            <button class="btn buttonForm" type="submit" id="btn1">
+              Submit
+            </button>
+          </div>
+        </div>
+          
+      </section>
+
+      <section style="display: none;" class="container row page_four">
+        <header>Skills</header>
+        <div class="uppertext">
+            <div class="introtext">Let's take care of your
+                Skills</div>
+            <div class="supporttext">
+                Employers scan skills for relevant keywords.
+                We’ll help you choose the best ones.
+            </div>
+        </div>
+            <div class="data skills" id="data">
+                <div class="input-box row frameworks">
+                    <label class="skill_title">Frameworks</label>
+                    <div class="col-3">
+                        <input type="checkbox" class="chkval" name="nodejs" value="Nodejs" >
+                        <label for="nodejs"> Nodejs</label><br>
+                    </div>
+                    <div class="col-3">
+                        <input type="checkbox" class="chkval" name="Flask" value="Flask">
+                        <label for="Flask">Flask</label><br>
+                    </div>
+                    <div class="col-3">
+                        <input type="checkbox" class="chkval" name="Django" value="Django">
+                        <label for="Django">Django</label><br>
+                    </div>
+                    <div class="col-3">
+                        <input type="checkbox" class="chkval" name="React" value="React">
+                        <label for="React">React</label><br>
+                    </div>
+                        <div class="col-3">
+                        <input type="checkbox" class="chkval" name="Express" value="Express">
+                        <label for="Express">Express</label><br>
+                    </div>
+                        <div class="col-3">
+                        <input type="checkbox" class="chkval" name="Vue.js" value="Vue.js">
+                        <label for="Vue.js">Vue.js</label><br>
+                    </div>
+                        <div class="col-3">
+                        <input type="checkbox" class="chkval" name="Angular" value="Angular">
+                        <label for="Angular">Angular</label><br>
+                    </div>
+                        <div class="col-3">
+                        <input type="checkbox" class="chkval" name="Bootstrap" value="Bootstrap">
+                        <label for="Bootstrap">Bootstrap</label><br>
+                    </div>
+                    <div class="col-3">
+                        <input type="checkbox" class="chkval" name="nodejs" value="Nodejs" >
+                        <label for="nodejs"> Nodejs</label><br>
+                    </div>
+                    <div class="col-3">
+                        <input type="checkbox" class="chkval" name="Flask" value="Flask">
+                        <label for="Flask">Flask</label><br>
+                    </div>
+                    <div class="col-3">
+                        <input type="checkbox" class="chkval" name="Django" value="Django">
+                        <label for="Django">Django</label><br>
+                    </div>
+                    <div class="col-3">
+                        <input type="checkbox" class="chkval" name="React" value="React">
+                        <label for="React">React</label><br>
+                    </div>
+                </div>
+                <hr>
+                <input type="text" id="txtval" name="userskills"/>
+
+                <div class="input-box row languages">
+                    <label class="skill_title">Languages</label>
+                    <div class="col-3">
+                        <input type="checkbox" name="Python" value="Python" >
+                        <label for="Python"> Python</label><br>
+                    </div>
+                    <div class="col-3">
+                        <input type="checkbox" name="Java" value="Java">
+                        <label for="Java">Java</label><br>
+                    </div>
+                    <div class="col-3">
+                        <input type="checkbox" name="HTML" value="HTML">
+                        <label for="HTML">HTML</label><br>
+                    </div>
+                    <div class="col-3">
+                        <input type="checkbox" name="C++" value="C++">
+                        <label for="C++">C++</label><br>
+                    </div>
+                        <div class="col-3">
+                        <input type="checkbox" name="Ruby" value="Ruby">
+                        <label for="Ruby">Ruby</label><br>
+                    </div>
+                        <div class="col-3">
+                        <input type="checkbox" name="Swift" value="Swift">
+                        <label for="Swift">Swift</label><br>
+                    </div>
+                        <div class="col-3">
+                        <input type="checkbox" name="Perl" value="Perl">
+                        <label for="Perl">Perl</label><br>
+                    </div>
+                        <div class="col-3">
+                        <input type="checkbox" name="SQL" value="SQL">
+                        <label for="SQL">SQL</label><br>
+                    </div>
+                    <div class="col-3">
+                        <input type="checkbox" name="Scala" value="Scala" >
+                        <label for="Scala"> Scala</label><br>
+                    </div>
+                    <div class="col-3">
+                        <input type="checkbox" name="Kotlin" value="Kotlin">
+                        <label for="Kotlin">Kotlin</label><br>
+                    </div>
+                    <div class="col-3">
+                        <input type="checkbox" name="PHP" value="PHP">
+                        <label for="PHP">PHP</label><br>
+                    </div>
+                    <div class="col-3">
+                        <input type="checkbox" name="Matlab" value="Matlab">
+                        <label for="Matlab">Matlab</label><br>
+                    </div>
+                </div>
+
+                <div class="input-box row ">
+                    <label class="skill_title">Other Skills</label>
+                    <div class="col-4">
+                        <input type="checkbox" name="teleEtiquette" value="teleEtiquette" >
+                        <label for="teleEtiquette">Good Telephone Etiquette</label><br>
+                    </div>
+                    <div class="col-4">
+                        <input type="checkbox" name="Written Communcication" value="Written Communcication">
+                        <label for="Written Communcication">Written Communcication</label><br>
+                    </div>
+                    <div class="col-4">
+                        <input type="checkbox" name="Data Entry" value="Data Entry">
+                        <label for="Data Entry">Data Entry</label><br>
+                    </div>
+                    <div class="col-4">
+                        <input type="checkbox" name="Self-Motivated" value="Self-Motivated">
+                        <label for="Self-Motivated">Self-Motivated</label><br>
+                    </div>
+                        <div class="col-4">
+                        <input type="checkbox" name="Decision-Making" value="Decision-Making">
+                        <label for="Decision-Making">Decision-Making</label><br>
+                    </div>
+                        <div class="col-4">
+                        <input type="checkbox" name="Problem-Solving" value="Problem-Solving">
+                        <label for="Problem-Solving">Problem-Solving</label><br>
+                    </div>
+                        <div class="col-4">
+                        <input type="checkbox" name="Teamwork and Collaboration" value="Teamwork and Collaboration">
+                        <label for="Teamwork and Collaboration">Teamwork and Collaboration</label><br>
+                    </div>
+                        <div class="col-4">
+                        <input type="checkbox" name="Google Workspace" value="Google Workspace">
+                        <label for="Google Workspace">Google Workspace</label><br>
+                    </div>
+                    <div class="col-4">
+                        <input type="checkbox" name="Active Listening" value="Active Listening" >
+                        <label for="Active Listening"> Active Listening</label><br>
+                    </div>
+                    <div class="col-4">
+                        <input type="checkbox" name="Analytical and Critical Thinking" value="Analytical and Critical Thinking">
+                        <label for="Analytical and Critical Thinking">Analytical and Critical Thinking</label><br>
+                    </div>
+                    <div class="col-4">
+                        <input type="checkbox" name="Planning and Coordination" value="Planning and Coordination">
+                        <label for="Planning and Coordination">Planning and Coordination</label><br>
+                    </div>
+                    <div class="col-4">
+                        <input type="checkbox" name="First Aid/CPR" value="First Aid/CPR">
+                        <label for="First Aid/CPR">First Aid/CPR</label><br>
+                    </div>
+                </div>
+
+                <div class="row buttons">
+                    <div class="col-md-4 prev">
+                      <button>previous</button>
+                    </div>
+            
+                    {% comment %} <div class="col-md-4 offset-md-4 next">
+                      <button><a href="#" onclick="return alert('form submitted succesfully....!')">Submit</a> </button>
+                    </div> {% endcomment %}
+                  {% comment %} <div class="col-12">
+                    <button class="btn buttonForm"  type="submit" id="btn1">
+                      Submit
+                    </button>
+                  </div>  {% endcomment %}
+            
+                   
+                  </div>
+            </div>   
+              </div>
+        </div>
+       
+    </section>
+
+</form>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+<script src="{% static 'main.js' %}"></script>
+
+  </body>
+
+</html>
