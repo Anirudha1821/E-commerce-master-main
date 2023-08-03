@@ -251,6 +251,8 @@
     } 
     else{
       cart=JSON.parse(localStorage.getItem('cart'));
+      {% comment %} else == when local storage me cart null nahi hai {% endcomment %}
+      document.getElementById('cart').innerHTML = Object.keys(cart).length;
     }
     {% comment %} stating j quert {% endcomment %}
     $('.cart').click(function(){
@@ -263,10 +265,12 @@
       }
       else{
       cart[idstr] = 1;
+        
       }
       console.log(cart);
       localStorage.setItem('cart', JSON.stringify(cart));
       {% comment %} storing to localstorage by setItem  {% endcomment %}
+      document.getElementById('cart').innerHTML = Object.keys(cart).length;
       });
    </script>
    {% endblock body %}
