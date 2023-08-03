@@ -25,8 +25,11 @@ def index(request):
 
 def home(request):
     return render(request,'home.html')
-def aboutus(request):
-    return render(request,'aboutus.html')
+def aboutus(request,myid):
+    product=Products.objects.filter(product_id=myid)
+    print(product)
+    # as product is the list ...product will not give you anything.....use product[0]
+    return render(request,'aboutus.html',{'myproduct':product[0]})
 def contact(request):
     return render(request,'contact.html')
 def tracker(request):

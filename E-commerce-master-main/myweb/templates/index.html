@@ -77,6 +77,9 @@
           <!-- or we can add directly ankle tag use our class  -->
           {% comment %} <a href="#"> {% endcomment %}
             <button id="{{j.product_id}}" class="other-btn1 cart" >Add to Cart</button>
+            <a href="/aboutus/{{j.product_id}}">
+              <button id="{{j.product_id}}" class="other-btn1 cart" >Quick view</button>
+            </a>
           {% comment %} </a> {% endcomment %}
         </div>
         {% endfor %}
@@ -272,5 +275,7 @@
       {% comment %} storing to localstorage by setItem  {% endcomment %}
       document.getElementById('cart').innerHTML = Object.keys(cart).length;
       });
+
+      
    </script>
    {% endblock body %}

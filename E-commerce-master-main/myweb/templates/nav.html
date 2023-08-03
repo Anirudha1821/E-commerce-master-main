@@ -14,8 +14,11 @@
   <!-- Custom StyleSheet -->
   {% comment %} <link rel="stylesheet" href="./style.css" /> {% endcomment %}
   <link rel="stylesheet" href="{% static 'mycss/index.css' %}">
+  <link rel="stylesheet" href="{% static 'mycss/aboutus.css' %}">
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
+  
+  
+  <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> -->
   <title>ASHALI ONLINE STORE</title>
 </head>
 
@@ -33,12 +36,17 @@
         <li class= "{% if request.path == '/contact' %} active {% endif %}" > <a href="/contact">Contact us</a></li>
         <li class= "{% if request.path == '/tracker' %} active {% endif %}" > <a href="/tracker">Tracker</a></li>
         <li class= "{% if request.path == '/Become_Seller' %} active {% endif %}" > <a href="/Become_Seller">Become Seller</a></li>
-        <li  > <a href="/Become_Seller">Cart(<span id="cart">0</span>)</a></li>
-        <li class= "{% if request.path == '/search' %} active {% endif %}" > <a href="/search">Search</a></li>
         <li class= "{% if request.path == '/register' %} active {% endif %}" > <a href="/register">Register</a></li>
         <li class= "{% if request.path == '/login' %} active {% endif %}" > <a href="/login">Login</a></li>
-
     </ul>
+    <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+    <button id='popcart' type="button" class="btn btn-secondary" data-container="body" data-toggle="popover" data-placement="bottom" data-content="Vivamus
+      sagittis lacus vel augue laoreet rutrum faucibus.">
+      Cart(<span id="cart">0</span>)
+    </button>
 </nav>
 {% block body %}
 
