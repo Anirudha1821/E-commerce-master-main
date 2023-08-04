@@ -267,7 +267,10 @@
     //if add to cart button is clicked 
 
 
-    $('.cart').click(function(){
+    //$('.cart').click(function(){
+    //as when we use clear_cart the dyanammically created content by click are deleted so we use j-query on function
+    $('.divpr').on('click', 'button.cart', function(){
+      //in this ....span has class=divpr and button has class=cart 
       var idstr= this.id.toString();
       console.log("Printed")
       console.log(idstr);
@@ -315,6 +318,16 @@
         updateCart(cart);
       });
 
+        $('.clear_cart').click(function(){
+          cart = JSON.parse(localStorage.getItem('cart'));
+          //this for sets (bt+ _ bt-) in each product desc(cart butn)
+          for (var item in cart) {
+              document.getElementById('div' + item).innerHTML = '<button id="' + item + '" class="other-btn1 cart">Add To Cart</button>'
+          }
+          localStorage.clear();
+          cart = {};
+          updateCart(cart);
+        });
 
 
       

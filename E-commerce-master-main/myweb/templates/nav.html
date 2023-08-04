@@ -31,25 +31,27 @@
 
  <header class="header">
   <nav>
-    <img src="{% static 'my_images/logo.png' %}" width="100" height="100" class="logob">
+    <a href="">
+      <img src="{% static 'my_images/logo.png' %}" width="100" height="100" class="logob">
+    </a>
 
     <ul>
-        <li class= "{% if request.path == '' %} active {% endif %}" > <a href="">Home</a></li>
         <li class= "{% if request.path == '/aboutus' %} active {% endif %}" > <a href="/aboutus">About us</a></li>
         <li class= "{% if request.path == '/contact' %} active {% endif %}" > <a href="/contact">Contact us</a></li>
         <li class= "{% if request.path == '/tracker' %} active {% endif %}" > <a href="/tracker">Tracker</a></li>
-        <li class= "{% if request.path == '/Become_Seller' %} active {% endif %}" > <a href="/Become_Seller">Become Seller</a></li>
         <li class= "{% if request.path == '/register' %} active {% endif %}" > <a href="/register">Register</a></li>
         <li class= "{% if request.path == '/login' %} active {% endif %}" > <a href="/login">Login</a></li>
     </ul>
     <form class="form-inline my-2 my-lg-0">
       <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+      <button class="other-btn1" type="submit">Search</button>
     </form>
-    <button id='popcart' type="button" class="btn btn-secondary" data-container="body" data-toggle="popover" data-placement="bottom" data-content="Vivamus
+    <button id='popcart' type="button" class="other-btn1" data-container="body" data-toggle="popover" data-placement="bottom" data-content="Vivamus
       sagittis lacus vel augue laoreet rutrum faucibus.">
       Cart(<span id="cart">0</span>)
     </button>
+    <button class="other-btn1 clear_cart" id="clear_cart "type="submit">Clear Cart</button>
+
 </nav>
 {% block body %}
 
