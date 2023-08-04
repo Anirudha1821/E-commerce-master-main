@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from .models import Products
+from .models import Products,Contact
 
 # Create your views here.
 def index(request):
@@ -25,12 +25,22 @@ def index(request):
 
 def home(request):
     return render(request,'home.html')
-def aboutus(request,myid):
+def Product(request,myid):
     product=Products.objects.filter(product_id=myid)
     print(product)
     # as product is the list ...product will not give you anything.....use product[0]
-    return render(request,'aboutus.html',{'myproduct':product[0]})
+    return render(request,'Product.html',{'myproduct':product[0]})
 def contact(request):
+    if(request.method == 'POST'):
+        print(request)
+        name=request.POST.get('name','default_values')
+        email=request.POST.get('email','default_values')
+        phoneno=request.POST.get('phoneno','default_values')
+        desc=request.POST.get('desc','default_values')
+        print(name,email,phoneno,desc)
+        # saving the contact 
+        my_contact=Contact(name=name,email=email,phoneno=phoneno,desc=desc)
+        my_contact.save()
     return render(request,'contact.html')
 def tracker(request):
     return render(request,'tracker.html')

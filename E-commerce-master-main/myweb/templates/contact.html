@@ -1,6 +1,22 @@
-{% extends "nav.html" %}
 {% load static %}
-
-{% block body %}
-<h1>This is contact block</h1>
-{% endblock body %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'mycss/contact.css' %}">
+</head>
+<body>
+    <!-- contact forward / is imp other wise it gives runtime error -->
+    <form action="/contact/" method="post"> 
+        {% csrf_token %}   
+        <br><br><br><br><br><br><br><br>  
+        <input  name="name" type="text" class="feedback-input" placeholder="Name" />   
+        <input   name="email"type="text" class="feedback-input" placeholder="Email" />
+        <input   name="phoneno"type="text" class="feedback-input" placeholder="Phone Number" />
+        <textarea  name="desc"class="feedback-input" placeholder="Description"></textarea>
+        <button type="submit" >SUBMIT</button>
+      </form>
+</body>
+</html>
