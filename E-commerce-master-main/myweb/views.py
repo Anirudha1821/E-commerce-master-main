@@ -1,6 +1,8 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse,HttpResponseRedirect, JsonResponse
 from .models import Products,Contact
+from django.urls import reverse
+
 
 # Create your views here.
 def index(request):
@@ -42,6 +44,53 @@ def contact(request):
         my_contact=Contact(name=name,email=email,phoneno=phoneno,desc=desc)
         my_contact.save()
     return render(request,'contact.html')
+
+def multistepformexample_save(request):
+    if request.method!='POST' :
+        return render(request,'login_merchant.html')
+        # return HttpResponseRedirect(reverse("login_merchant"))
+    else:
+        mdname = (request.POST.get('dname'))
+        mdsurname = (request.POST.get('dsurname'))
+        mdphoneno = (request.POST.get('dphoneno'))
+        mdemail = (request.POST.get('demail'))
+        mdesc = (request.POST.get('desc'))
+        mdcountry = (request.POST.get('dcountry'))
+        mdcity = (request.POST.get('dcity'))
+        mdpincode = (request.POST.get('dpincode'))
+        mdschool = (request.POST.get('dschool'))
+        mdcollege = (request.POST.get('dcollege'))
+        mddegree = (request.POST.get('ddegree'))
+        mdmonth = (request.POST.get('dmonth'))
+        mdposition = (request.POST.get('dposition'))
+        mdcompany = (request.POST.get('dcompany'))
+        mdc1 = (request.POST.get('dc1'))
+        mdcc1 = (request.POST.get('dcc1'))
+        mdm1 = (request.POST.get('dm1'))
+        mdm2 = (request.POST.get('dm2'))
+        mdata = {
+            'mdname': mdname,
+            'mdsurname': mdsurname,
+            'mdphoneno': mdphoneno,
+            'mdemail': mdemail,
+            'mdcountry': mdcountry,
+            'mdcity': mdcity,
+            'mdesc': mdesc,
+            'mdpincode': mdpincode,
+            'mdcompany': mdcompany,
+            'mdschool': mdschool,
+            'mdcollege': mdcollege,
+            'mddegree': mddegree,
+            'mdmonth': mdmonth,
+            'mdposition': mdposition,
+            'mdc1': mdc1,
+            'mdcc1': mdcc1,
+            'mdm1': mdm1,
+            'mdm2': mdm2,
+        }
+        return render(request,'login_merchant.html')
+        # return HttpResponseRedirect(reverse('login_merchant'))
+
 def tracker(request):
     return render(request,'tracker.html')
 def search(request):

@@ -31,7 +31,7 @@
     {% comment %} <h1>{{tempmenuname}}</h1> {% endcomment %}
     {% comment %} {{tempmenuname}} {% endcomment %}
     
-    <form action="contact" method="post" class="form">
+    <form action="/multistepformexample_save/" method="post" class="form">
       {% csrf_token %}
 
     <section  class="container row page_one">
@@ -48,45 +48,45 @@
         <div class="input-box row names">
         <div class="col-6 firstname">
           <label>First Name</label>
-          <input name="dname" type="text" placeholder="Enter first name"   />
+          <input name="name" type="text" placeholder="Enter first name"   />
         </div>
         <div class="col-6 surname">
           <label>Surname</label>
-          <input name="dsurname" type="text" placeholder="Enter surname" required />
+          <input name="surname" type="text" placeholder="Enter surname" />
         </div>
       </div>
 
       <div class="input-box row address">
         <div class="col-4 city ">
           <label>City</label>
-          <input name="dcity" type="text" placeholder="e.g. New Delhi" required />
+          <input name="city" type="text" placeholder="e.g. New Delhi" />
         </div>
         <div class="col-4 country">
           <label>Country</label>
-          <input name="dcountry" type="text" placeholder="e.g. India" required />
+          <input name="country" type="text" placeholder="e.g. India" />
         </div>
 
         <div class="col-4 pincode" >
           <label>Pin-Code</label>
-          <input name="dpincode" type="text" placeholder="e.g. 411043" required />
+          <input name="pincode" type="text" placeholder="e.g. 411043" />
         </div>
       </div>
 
       <div class="input-box row contact">
         <div class="col-6 phonenum">
           <label>Phone</label>
-          <input name="dphoneno" type="text" placeholder="Enter phone number" required />
+          <input name="phoneno" type="text" placeholder="Enter phone number" />
         </div>
         <div class="col-6 email">
           <label>Email</label>
-          <input name="demail" type="text" placeholder="Enter email" required />
+          <input name="email" type="text" placeholder="Enter email" />
         </div>
       </div>
 
       <div class="input-box row desc">
         <div class="col-6 desc">
           <label>Short Description</label>
-          <input name="desc" type="desc" placeholder="Enter Description" required />
+          <input name="desc" type="desc" placeholder="Enter Description" />
         </div>
       </div>
 
@@ -109,18 +109,18 @@
           <div class="input-box row names">
             <div class="col-6 sclname">
               <label>School Name</label>
-              <input name="dschool" type="text" placeholder="Enter school name" required />
+              <input name="dschool" type="text" placeholder="Enter school name" />
             </div>
             <div class="col-6 scl_loc">
               <label>College Name</label>
-              <input name="dcollege" type="text" placeholder="Enter College name" required />
+              <input name="dcollege" type="text" placeholder="Enter College name" />
             </div>
           </div>
   
           <div class="input-box row">
             <div class="col-6 degree">
               <label>Degree</label>
-              <input name="ddegree" type="text" placeholder="Enter Degree" required />
+              <input name="ddegree" type="text" placeholder="Enter Degree" />
             </div>
             <div class="col-6 graduatedate">
               <label>Graduation Date</label>
@@ -155,22 +155,22 @@
           <div class="input-box row post">
           <div class="col-6 post">
             <label>What was your Position</label>
-            <input name="dposition" type="text" placeholder="Similar to job title that bext describes the work you did" required />
+            <input name="dposition" type="text" placeholder="Similar to job title that bext describes the work you did" />
           </div>
           <div class="col-6 surname">
             <label>Who did you do this for ?</label>
-            <input name="dcompany" type="text" placeholder="Person,Organisation,company or family you worked for " required />
+            <input name="dcompany" type="text" placeholder="Person,Organisation,company or family you worked for " />
           </div>
         </div>
   
         <div class="input-box row address">
           <div class="col-6 city ">
             <label>City</label>
-            <input name="dc1" type="text" placeholder="e.g. New Delhi" required />
+            <input name="dc1" type="text" placeholder="e.g. New Delhi" />
           </div>
           <div class="col-6 country">
             <label>Country</label>
-            <input name="dcc1" type="text" placeholder="e.g. India" required />
+            <input name="dcc1" type="text" placeholder="e.g. India" />
           </div>
         </div>
   
@@ -195,22 +195,22 @@
         <div class="input-box row post">
           <div class="col-6 post">
             <label>What was your Position</label>
-            <input name="dtitle" type="text" placeholder="Similar to job title that bext describes the work you did" required />
+            <input name="dtitle" type="text" placeholder="Similar to job title that bext describes the work you did" />
           </div>
           <div class="col-6 surname">
             <label>Who did you do this for ?</label>
-            <input name="dcompany" type="text" placeholder="Person,Organisation,company or family you worked for " required />
+            <input name="dcompany" type="text" placeholder="Person,Organisation,company or family you worked for " />
           </div>
         </div>
   
         <div class="input-box row address">
           <div class="col-6 city ">
             <label>City</label>
-            <input name="d" type="text" placeholder="e.g. New Delhi" required />
+            <input name="d" type="text" placeholder="e.g. New Delhi" />
           </div>
           <div class="col-6 country">
             <label>Country</label>
-            <input name="d" type="text" placeholder="e.g. India" required />
+            <input name="d" type="text" placeholder="e.g. India" />
           </div>
         </div> -->
   
@@ -436,7 +436,7 @@
 
 </form>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-<script src="{% static 'main.js' %}"></script>
+<script src="{% static 'form.js' %}"></script>
 
   </body>
 
