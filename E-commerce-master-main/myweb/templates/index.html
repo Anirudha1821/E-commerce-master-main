@@ -256,6 +256,7 @@
       var cart={};
     } 
     else{
+      //,,vvimp 
       cart=JSON.parse(localStorage.getItem('cart'));
       //else == when local storage me cart null nahi hai
       document.getElementById('cart').innerHTML = Object.keys(cart).length;
@@ -269,6 +270,7 @@
 
     $('.cart').click(function(){
       var idstr= this.id.toString();
+      console.log("Printed")
       console.log(idstr);
       if(cart[idstr]!= undefined) {
       cart[idstr] = cart[idstr]+1;
@@ -307,6 +309,7 @@
         updateCart(cart);
       });
       $('.divpr').on("click", "button.plus", function() {
+      
         a = this.id.slice(4, );
         cart[a] = cart[a] + 1;
         document.getElementById('val' + a).innerHTML = cart[a];
