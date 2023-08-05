@@ -11,6 +11,10 @@ class Products(models.Model):
     price=models.IntegerField(default=0)
     product_pub_date=models.DateField()
     image=models.ImageField(upload_to="images",default="")
+    
+    class Meta:
+        # we can set manualy values to  set the plural name of the model.
+        verbose_name_plural = "Products"
 
     def __str__(self):
         return self.product_name
