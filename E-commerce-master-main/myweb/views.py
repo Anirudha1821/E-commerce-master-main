@@ -95,8 +95,8 @@ def tracker(request):
     return render(request,'tracker.html')
 def search(request):
     return render(request,'search.html')
-def checkout(request):
-    return render(request,'checkout.html')
+def checkout_page(request):
+    return render(request,'checkout_page.html')
 def register(request):
     return render(request,'register.html')
 def login(request):
