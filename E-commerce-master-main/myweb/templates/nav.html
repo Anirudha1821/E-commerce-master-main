@@ -36,7 +36,9 @@
     </a>
 
     <ul>
-        <li class= "{% if request.path == '/aboutus' %} active {% endif %}" > <a href="/aboutus">About us</a></li>
+        {% comment %} <li class= "{% if request.path == '/aboutus' %} active {% endif %}" > <a href="/aboutus">About us</a></li> {% endcomment %}
+        {% comment %} thing is when you use only ankle tag ..then it finds path.py [0] but when we use {urls} then it is finded by urls.py name field {% endcomment %}
+        <li > <a href="{% url 'aboutus' %}">About us</a></li>
         <li class= "{% if request.path == '/contact' %} active {% endif %}" > <a href="/contact">Contact us</a></li>
         <li class= "{% if request.path == '/tracker' %} active {% endif %}" > <a href="/tracker">Tracker</a></li>
         <li class= "{% if request.path == '/register' %} active {% endif %}" > <a href="/register">Register</a></li>

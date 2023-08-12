@@ -111,3 +111,5 @@ def reviews(request):
     return render(request,'reviews.html')
 def trys(request):
     return render(request,'try.html')
+def aboutus(request):
+    return render(request,'aboutus.html')
