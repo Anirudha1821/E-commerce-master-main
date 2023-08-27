@@ -2,9 +2,41 @@ from django.shortcuts import render
 from django.http import HttpResponse,HttpResponseRedirect, JsonResponse
 from .models import Products,Contact
 from django.urls import reverse
+from django.contrib.auth.forms import UserCreationForm
+from .forms import signupform
+from django.contrib import messages
+from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth import authenticate,login,logout
 
+# sign up view function 
+def sign_up(request):
+    if(request.method == 'POST'):
+        fm=signupform(request.POST)
+        if fm.is_valid():
+            messages.success(request,"Account created succesfully!!!!!!!")
+            fm.save()
+    else: 
+        fm=signupform()
+    return render(request,'sign_up.html',{'form':fm})
 
-# Create your views here.
+# sign in view function 
+def login(request):
+    if(request.method == 'POST'):
+        fm=AuthenticationForm(request=request,data=request.POST)
+        if fm.is_valid():
+            uname=fm.cleaned_data['username']
+            upass=fm.cleaned_data['password']
+            user=authenticate(username='uname',password='upass')
+            if user is not None:
+                login(request,user)
+                return HttpResponseRedirect('/index/')
+
+            messages.success(request,"Login succesfully!!!!!!!")
+            fm.save()
+    else: 
+        fm=AuthenticationForm()
+    return render(request,'login.html',{'form':fm})
+
 def index(request):
     
     my_products=Products.objects.all()
@@ -24,7 +56,9 @@ def index(request):
     paras={'to_pass_products':my_products,'range':range(n),'prod_lis':all_prod_lis}
 
     return render(request,'index.html',paras)
-
+def logout(request):
+    logout(request)
+    return HttpResponseRedirect('/login/')   
 def home(request):
     return render(request,'home.html')
 def Product(request,myid):
@@ -99,8 +133,6 @@ def checkout_page(request):
     return render(request,'checkout_page.html')
 def register(request):
     return render(request,'register.html')
-def login(request):
-    return render(request,'login.html')
 def login_merchant(request):
     return render(request,'login_merchant.html')
 def login_customer(request):
