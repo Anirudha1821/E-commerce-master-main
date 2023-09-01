@@ -28,17 +28,17 @@ class Contact(models.Model):
     def __str__(self):
         return self.name
 class Merchant(models.Model):
-    mechant_id=models.IntegerField()
-    name=models.CharField( max_length=50)
-    surname=models.CharField( max_length=50)
-    city=models.CharField( max_length=50)
-    country=models.CharField( max_length=50)
-    pincode=models.IntegerField()
-    phoneno=models.CharField(max_length=60,default="")
-    email = models.CharField( max_length=50,default="")
-    shippingadd=models.CharField( max_length=50)
-    billingadd=models.CharField( max_length=50)
-    desc=models.CharField(max_length=200,default="")
+    # mechant_id=models.IntegerField()
+    name=models.CharField( max_length=50, null=True)
+    surname=models.CharField( max_length=50, null=True)
+    city=models.CharField( max_length=50, null=True)
+    country=models.CharField( max_length=50, null=True)
+    pincode=models.IntegerField(null=True)
+    phoneno=models.CharField(max_length=60,default="", null=True)
+    email = models.CharField( max_length=50,default="", null=True)
+    shippingadd=models.CharField( max_length=50, null=True)
+    billingadd=models.CharField( max_length=50, null=True)
+    desc=models.CharField(max_length=200,default="", null=True)
     def __str__(self):
         return self.name
     

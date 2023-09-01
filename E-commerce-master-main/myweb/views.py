@@ -134,34 +134,34 @@ def register(request):
 def login_merchant(request):
     # if request.method!='POST' :
     #     return render(request,'login_merchant.html')
-    if request.method=='GET' :
-        return render(request,'login_merchant.html')
-    else:
-        mname = (request.POST.get('name'))
-        msurname = (request.POST.get('surname'))
-        mphoneno = (request.POST.get('phoneno'))
-        memail = (request.POST.get('email'))
-        mdesc = (request.POST.get('desc'))
-        mcountry = (request.POST.get('country'))
-        mcity = (request.POST.get('city'))
-        mbillingadd = (request.POST.get('billingadd'))
-        mshpingadd = (request.POST.get('shpingadd'))
-        mpincode = (request.POST.get('pincode'))
+    mdata={}
+    if request.method=='POST' :
+        mname = request.POST.get('name')
+        msurname = request.POST.get('surname')
+        mphoneno = request.POST.get('phoneno')
+        memail = request.POST.get('email')
+        mdesc = request.POST.get('desc')
+        mcountry = request.POST.get('country')
+        mcity = request.POST.get('city')
+        mbillingadd = request.POST.get('billingadd')
+        mshippingadd = request.POST.get('shippingadd')
+        mpincode = request.POST.get('pincode')
 
         mdata = {
-            'mname': mname,
-            'msurname': msurname,
-            'mphoneno': mphoneno,
-            'memail': memail,
-            'mcountry': mcountry,
-            'mcity': mcity,
-            'mdesc': mdesc,
-            'mpincode': mpincode,
-            'mshpingadd': mshpingadd,
-            'mbillingadd': mbillingadd,
+                'mname': mname,
+                'msurname': msurname,
+                'mphoneno': mphoneno,
+                'memail': memail,
+                'mcountry': mcountry,
+                'mcity': mcity,
+                'mdesc': mdesc,
+                'mpincode': mpincode,
+                'mshippingadd': mshippingadd,
+                'mbillingadd': mbillingadd,
         }
-        myobj=Merchant(name=mname,msurname=msurname,mphoneno=mphoneno,memail=memail,mdesc=mdesc,mcountry=mcountry,mcity=mcity,mpincode=mpincode,mshpingadd=mshpingadd,mbillingadd=mbillingadd)
-    return render(request,'login_merchant.html')
+        myobj=Merchant(name=mname,surname=msurname,phoneno=mphoneno,email=memail,desc=mdesc,country=mcountry,city=mcity,pincode=mpincode,shippingadd=mshippingadd,billingadd=mbillingadd)
+        myobj.save()
+    return render(request,'login_merchant.html',{'formdet':mdata})
 def login_customer(request):
     return render(request,'login_customer.html')
 def Become_Seller(request):
