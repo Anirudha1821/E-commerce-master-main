@@ -1,19 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+{% extends "nav.html" %}
+{% load static %}
+  {% block body %}
     <style>
         .er{
             color: red;
             background-color: chartreuse;
         }
     </style>
-</head>
-<body>
+    <br><br>
     This is login page
+    <br>
     <hr>
+    <br>
     <form action="" method="post">
         {% csrf_token %}
         {% comment %} {{form.as_p}} {% endcomment %}
@@ -50,8 +48,9 @@
             {% comment %} here small tag first part ends  {% endcomment %}
             {{message}} 
         </small>
-    
         {% endfor %}
     {% endif %}
-</body>
-</html>
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+
+{% endblock body %}

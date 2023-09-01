@@ -1,21 +1,23 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h1>Welcome  {{name}} </h1>
-    <h2>This is a your Dashyy Dashboard</h2>
+{% extends "nav.html" %}
+{% load static %}
+  {% block body %}
+    <h1>Welcome  {{name}} </h1><br>
+    <h3>This is a your Dashyy Dashboard</h3><br>
+    
 
     {% if perms.myweb.delete_products %}
     <a href="/product_form">
         <button id="btn1" class="other-btn1 cart" >Add Product</button>
     </a><br><br>
-    <input type="button" value="Delete Product"><br><br>
-    <input type="button" value="Edit Product"><br><br>
-    <input type="button" value="See Sales Stastitics"><br><br>
+    <a href="/product_form">
+        <button id="btn1" class="other-btn1 cart" >Delete Product</button>
+    </a><br><br>
+    <a href="/product_form">
+        <button id="btn1" class="other-btn1 cart" >Edit Product</button>
+    </a><br><br>
+    <a href="/product_form">
+        <button id="btn1" class="other-btn1 cart" >See Sales Stastitics</button>
+    </a><br><br>
 
     {% else %}
         <a href="/checkout_page">
@@ -77,5 +79,7 @@
     <a href="{% url 'sign_out' %}">LogOut</a>
     <a href="{% url 'change_pass' %}">Change Paaword</a>
 
-</body>
-</html>
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+
+{% endblock body %}
