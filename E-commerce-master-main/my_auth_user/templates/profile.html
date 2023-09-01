@@ -1,10 +1,9 @@
 {% extends "nav.html" %}
 {% load static %}
   {% block body %}
-    <h1>Welcome  {{name}} </h1><br>
+  <div class="center1">
+    <h1 >Welcome {{name}} </h1><br>
     <h3>This is a your Dashyy Dashboard</h3><br>
-    
-
     {% if perms.myweb.delete_products %}
     <a href="/product_form">
         <button id="btn1" class="other-btn1 cart" >Add Product</button>
@@ -24,16 +23,23 @@
             <button id="btn1" class="other-btn1 cart" >Check Out My Cart</button>
         </a><br><br>    
     {% endif %}
-
-
-
+</div>
     {% if users != None %}
-        <h3>List of Users</h3>
+        <h1 class="welcome">List of Users</h1>
         {% for user in users %}
-            <a href="{% url 'userdetail' user.id %}">{{user.username}}</a>
-            <br><br>
+            <div id="example">
+                <ul class="list">
+                  <li class="shopping">
+                    <span class="subtitle">{{user.id}}</span>
+                    <span class="title">
+                        <a href="{% url 'userdetail' user.id %}">{{user.username}}</a>
+                    </span>
+                  </li>
+                </ul>
+            </div>
         {% endfor %}
     {% endif %}
+    <br><br>
     {% if messages %}
         {% for message in messages%}
 
