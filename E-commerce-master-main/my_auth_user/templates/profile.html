@@ -10,10 +10,13 @@
     <h2>This is a your Dashyy Dashboard</h2>
 
     {% if perms.myweb.delete_products %}
-    <input type="button" value="Add Product"><br><br>
+    <a href="/product_form">
+        <button id="btn1" class="other-btn1 cart" >Add Product</button>
+    </a><br><br>
     <input type="button" value="Delete Product"><br><br>
     <input type="button" value="Edit Product"><br><br>
     <input type="button" value="See Sales Stastitics"><br><br>
+
     {% else %}
         <h3>No permission to delete</h3>
     {% endif %}

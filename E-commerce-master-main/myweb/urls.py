@@ -19,4 +19,5 @@ urlpatterns = [
     path("multistepformexample_save/", views.multistepformexample_save,name="HomePage"),
     path("register/", views.register,name="HomePage"),
     path("thanks/", views.thanks,name="thanks"),
+    path("product_form/", views.product_form,name="product_form"),
 ]

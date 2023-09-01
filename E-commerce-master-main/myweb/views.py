@@ -3,7 +3,7 @@ from django.http import HttpResponse,HttpResponseRedirect, JsonResponse
 from .models import Products,Contact,Merchant
 from django.urls import reverse
 from django.contrib.auth.forms import UserCreationForm
-from .forms import signupform
+from .forms import signupform,productsform
 from django.contrib import messages
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import authenticate,login,logout
@@ -132,8 +132,6 @@ def checkout_page(request):
 def register(request):
     return render(request,'register.html')
 def login_merchant(request):
-    # if request.method!='POST' :
-    #     return render(request,'login_merchant.html')
     mdata={}
     if request.method=='POST' :
         mname = request.POST.get('name')
@@ -161,7 +159,7 @@ def login_merchant(request):
         }
         myobj=Merchant(name=mname,surname=msurname,phoneno=mphoneno,email=memail,desc=mdesc,country=mcountry,city=mcity,pincode=mpincode,shippingadd=mshippingadd,billingadd=mbillingadd)
         myobj.save()
-    return render(request,'login_merchant.html',{'formdet':mdata})
+    return render(request,'login_merchant.html',{'formdata':mdata})
 def login_customer(request):
     return render(request,'login_customer.html')
 def Become_Seller(request):
@@ -172,5 +170,28 @@ def trys(request):
     return render(request,'try.html')
 def aboutus(request):
     return render(request,'aboutus.html')
+def product_form(request):
+    mdata={}
+    if request.method=='POST' :
+        mname = request.POST.get('name')
+        mcat = request.POST.get('cat')
+        msubcat = request.POST.get('subcat')
+        mprice = request.POST.get('price')
+        mdesc = request.POST.get('desc')
+        mdate = request.POST.get('date')
+        mimage = request.FILES.get('image')
+
+        mdata = {
+                'mname': mname,
+                'mcat': mcat,
+                'msubcat': msubcat,
+                'mprice': mprice,
+                'mdate': mdate,
+                'mimage': mimage,
+                'mdesc': mdesc,
+        }
+        myobj=Products(product_name=mname,category=mcat,subcategory=msubcat,price=mprice,product_desc=mdesc,product_pub_date=mdate,image=mimage)
+        myobj.save()
+    return render(request,'product_form.html',{'formdata':mdata})
 def thanks(request):
     return render(request,'thanks.html')
