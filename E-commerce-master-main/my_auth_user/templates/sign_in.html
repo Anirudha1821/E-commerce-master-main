@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .er{
+            color: red;
+            background-color: chartreuse;
+        }
+    </style>
+</head>
+<body>
+    This is login page
+    <hr>
+    <form action="" method="post">
+        {% csrf_token %}
+        {% comment %} {{form.as_p}} {% endcomment %}
+
+        {% comment %} too see error fields when username/password is wrong {% endcomment %}
+        
+        {% if form.non_field_errors %}
+            {% for error in form.non_field_errors %}
+                <!-- we use p tag to get the error below in a seprate line  -->
+                <p class ="er">{{error}}</p>
+            {% endfor %}
+        {% endif %}
+
+        {% for fm in form %}
+        {% comment %} labeltag field error  {% endcomment %}
+        {{fm.label_tag}}{{fm}}{{fm.errors|striptags}} <br><br>
+
+        {% endfor %}
+
+        <button type="submit">Submit</button>
+    </form>
+    <hr>
+    <a href="{% url 'sign_up' %}">Sign Up</a>
+    <a href="{% url 'change_pass' %}">Change Paaword</a>
+        {% comment %} if messages were sent then  {% endcomment %}
+    {% if messages %}
+        {% for message in messages%}
+    
+    
+    
+        {% comment %} here we are assigning class as "success" for css prupose only {% endcomment %}
+        </small
+            {% if message.tags %} class ="{{message.tags}}"{% endif %}>   
+            {% comment %} here small tag first part ends  {% endcomment %}
+            {{message}} 
+        </small>
+    
+        {% endfor %}
+    {% endif %}
+</body>
+</html>

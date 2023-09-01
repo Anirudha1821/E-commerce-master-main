@@ -39,7 +39,9 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     'myweb.apps.MywebConfig', 
-    'rest_framework'
+    'rest_framework',
+    'my_auth_user',
+    
 ]
 
 MIDDLEWARE = [

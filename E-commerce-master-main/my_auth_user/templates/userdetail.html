@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User details</title>
+</head>
+<body>
+    <h1>User Profile</h1>
+    <h3>Welcome</h3>
+    <form action="" method ="post">
+        {{form.as_p}}
+    </form>
+
+    <a href="{% url 'profile' %}">Profile</a>
+    <br>
+    <a href="{% url 'sign_out' %}">LogOut</a>
+
+
+</body>
+</html>

@@ -27,6 +27,20 @@ class Contact(models.Model):
     desc=models.CharField(max_length=200,default="")
     def __str__(self):
         return self.name
-
+class Merchant(models.Model):
+    mechant_id=models.IntegerField()
+    name=models.CharField( max_length=50)
+    surname=models.CharField( max_length=50)
+    city=models.CharField( max_length=50)
+    country=models.CharField( max_length=50)
+    pincode=models.IntegerField()
+    phoneno=models.CharField(max_length=60,default="")
+    email = models.CharField( max_length=50,default="")
+    shippingadd=models.CharField( max_length=50)
+    billingadd=models.CharField( max_length=50)
+    desc=models.CharField(max_length=200,default="")
+    def __str__(self):
+        return self.name
     
+       
     

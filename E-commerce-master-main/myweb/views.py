@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse,HttpResponseRedirect, JsonResponse
-from .models import Products,Contact
+from .models import Products,Contact,Merchant
 from django.urls import reverse
 from django.contrib.auth.forms import UserCreationForm
 from .forms import signupform
@@ -9,34 +9,34 @@ from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import authenticate,login,logout
 
 # sign up view function 
-def sign_up(request):
-    if(request.method == 'POST'):
-        fm=signupform(request.POST)
-        if fm.is_valid():
-            messages.success(request,"Account created succesfully!!!!!!!")
-            fm.save()
-    else: 
-        fm=signupform()
-    return render(request,'sign_up.html',{'form':fm})
+# def sign_up(request):
+#     if(request.method == 'POST'):
+#         fm=signupform(request.POST)
+#         if fm.is_valid():
+#             messages.success(request,"Account created succesfully!!!!!!!")
+#             fm.save()
+#     else: 
+#         fm=signupform()
+#     return render(request,'sign_up.html',{'form':fm})
 
-# sign in view function 
-def login(request):
-    if(request.method == 'POST'):
-        fm=AuthenticationForm(request=request,data=request.POST)
-        if fm.is_valid():
-            uname=fm.cleaned_data['username']
-            upass=fm.cleaned_data['password']
-            user=authenticate(username='uname',password='upass')
-            if user is not None:
-                login(request,user)
-                return HttpResponseRedirect('/index/')
+# # sign in view function 
+# def login(request):
+#     if(request.method == 'POST'):
+#         fm=AuthenticationForm(request=request,data=request.POST)
+#         if fm.is_valid():
+#             uname=fm.cleaned_data['username']
+#             upass=fm.cleaned_data['password']
+#             user=authenticate(username='uname',password='upass')
+#             if user is not None:
+#                 login(request,user)
+#                 return HttpResponseRedirect('/index/')
 
-            messages.success(request,"Login succesfully!!!!!!!")
-            fm.save()
-    else: 
-        fm=AuthenticationForm()
-    return render(request,'login.html',{'form':fm})
-
+#             messages.success(request,"Login succesfully!!!!!!!")
+#             fm.save()
+#     else: 
+#         fm=AuthenticationForm()
+#     return render(request,'login.html',{'form':fm})
+ 
 def index(request):
     
     my_products=Products.objects.all()
@@ -56,9 +56,7 @@ def index(request):
     paras={'to_pass_products':my_products,'range':range(n),'prod_lis':all_prod_lis}
 
     return render(request,'index.html',paras)
-def logout(request):
-    logout(request)
-    return HttpResponseRedirect('/login/')   
+ 
 def home(request):
     return render(request,'home.html')
 def Product(request,myid):
@@ -134,6 +132,35 @@ def checkout_page(request):
 def register(request):
     return render(request,'register.html')
 def login_merchant(request):
+    # if request.method!='POST' :
+    #     return render(request,'login_merchant.html')
+    if request.method=='GET' :
+        return render(request,'login_merchant.html')
+    else:
+        mname = (request.POST.get('name'))
+        msurname = (request.POST.get('surname'))
+        mphoneno = (request.POST.get('phoneno'))
+        memail = (request.POST.get('email'))
+        mdesc = (request.POST.get('desc'))
+        mcountry = (request.POST.get('country'))
+        mcity = (request.POST.get('city'))
+        mbillingadd = (request.POST.get('billingadd'))
+        mshpingadd = (request.POST.get('shpingadd'))
+        mpincode = (request.POST.get('pincode'))
+
+        mdata = {
+            'mname': mname,
+            'msurname': msurname,
+            'mphoneno': mphoneno,
+            'memail': memail,
+            'mcountry': mcountry,
+            'mcity': mcity,
+            'mdesc': mdesc,
+            'mpincode': mpincode,
+            'mshpingadd': mshpingadd,
+            'mbillingadd': mbillingadd,
+        }
+        myobj=Merchant(name=mname,msurname=msurname,mphoneno=mphoneno,memail=memail,mdesc=mdesc,mcountry=mcountry,mcity=mcity,mpincode=mpincode,mshpingadd=mshpingadd,mbillingadd=mbillingadd)
     return render(request,'login_merchant.html')
 def login_customer(request):
     return render(request,'login_customer.html')
@@ -145,3 +172,5 @@ def trys(request):
     return render(request,'try.html')
 def aboutus(request):
     return render(request,'aboutus.html')
+def thanks(request):
+    return render(request,'thanks.html')

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Welcome  {{name}} </h1>
+    <h2>This is a your Dashyy Dashboard</h2>
+
+    {% if perms.myweb.delete_products %}
+    <input type="button" value="Add Product"><br><br>
+    <input type="button" value="Delete Product"><br><br>
+    <input type="button" value="Edit Product"><br><br>
+    <input type="button" value="See Sales Stastitics"><br><br>
+    {% else %}
+        <h3>No permission to delete</h3>
+    {% endif %}
+
+
+
+    {% if users != None %}
+        <h3>List of Users</h3>
+        {% for user in users %}
+            <a href="{% url 'userdetail' user.id %}">{{user.username}}</a>
+            <br><br>
+        {% endfor %}
+    {% endif %}
+    {% if messages %}
+        {% for message in messages%}
+
+
+
+        {% comment %} here we are assigning class as "success" for css prupose only {% endcomment %}
+        </small
+            {% if message.tags %} class ="{{message.tags}}"{% endif %}>   
+            {% comment %} here small tag first part ends  {% endcomment %}
+            {{message}} 
+        </small>
+
+        {% endfor %}
+    {% endif %}
+
+    <form action="" method="post" novalidate>
+        {% csrf_token %}
+        {% comment %} {{form.as_p}} {% endcomment %}
+
+        {% comment %} too see error fields when username/password is wrong {% endcomment %}
+        
+        {% if form.non_field_errors %}
+            {% for error in form.non_field_errors %}
+                <!-- we use p tag to get the error below in a seprate line  -->
+                <p class ="er">{{error}}</p>
+            {% endfor %}
+        {% endif %}
+
+        {% for fm in form %}
+        {% comment %} labeltag field error  {% endcomment %}
+        {{fm.label_tag}}{{fm}}{{fm.errors|striptags}} <br><br>
+
+        {% endfor %}
+
+        <button type="submit" value="save">Submit</button>
+        {% comment %} we use value = save as when user want to change its details  {% endcomment %}
+    </form>
+
+
+
+
+
+    <a href="{% url 'sign_out' %}">LogOut</a>
+    <a href="{% url 'change_pass' %}">Change Paaword</a>
+
+</body>
+</html>

@@ -42,8 +42,8 @@
         <li class= "{% if request.path == '/contact' %} active {% endif %}" > <a href="/contact">Contact us</a></li>
         <li class= "{% if request.path == '/tracker' %} active {% endif %}" > <a href="/tracker">Tracker</a></li>
         <li class= "{% if request.path == '/register' %} active {% endif %}" > <a href="/register">Register</a></li>
-        <li class= "{% if request.path == '/login' %} active {% endif %}" > <a href="/login">Login</a></li>
-        <li class= "{% if request.path == '/logout' %} active {% endif %}" > <a href="{% url 'logout' %}">Logout</a></li>
+        <li class= "{% if request.path == '/auth/sign_in' %} active {% endif %}" > <a href="/auth/sign_in">Login</a></li>
+        {% comment %} <li class= "{% if request.path == '/logout' %} active {% endif %}" > <a href="{% url 'logout' %}">Logout</a></li> {% endcomment %}
     </ul>
     <form class="form-inline my-2 my-lg-0">
       <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">

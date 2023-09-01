@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .success{
+            color: rgb(158, 237, 158);
+            background-color: rgb(0, 212, 0);
+        }
+        .er{
+            color: red;
+            background-color: chartreuse;
+        }
+    </style>
+</head>
+<body>
+    This is sign_up page
+    <hr>
+    <form action="" method="post">
+        {% csrf_token %}
+
+        {% if form.non_field_errors %}
+            {% for error in form.non_field_errors %}
+                <!-- we use p tag to get the error below in a seprate line  -->
+                <p class ="er">{{error}}</p>
+            {% endfor %}
+        {% endif %}
+        {% for fm in form %}
+            {% comment %} labeltag field error  {% endcomment %}
+          {{fm.label_tag}}{{fm}}{{fm.errors|striptags}} <br><br>
+
+        {% endfor %}
+        <input type="submit" value="submit">
+    </form>
+    <hr>
+    <a href="{% url 'sign_in' %}">Login</a>
+    <br>
+
+    {% comment %} if messages were sent then  {% endcomment %}
+    {% if messages %}
+    {% for message in messages%}
+
+
+
+    {% comment %} here we are assigning class as "success" for css prupose only {% endcomment %}
+    </small
+        {% if message.tags %} class ="{{message.tags}}"{% endif %}>   
+        {% comment %} here small tag first part ends  {% endcomment %}
+        {{message}} 
+    </small>
+
+    {% endfor %}
+    {% endif %}
+</body>
+</html>
