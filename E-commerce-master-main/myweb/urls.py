@@ -16,7 +16,6 @@ urlpatterns = [
     path("login_customer/", views.login_customer,name="HomePage"),
     path("Become_Seller/", views.Become_Seller,name="HomePage"),
     path("trys/", views.trys,name="HomePage"),
-    path("multistepformexample_save/", views.multistepformexample_save,name="HomePage"),
     path("register/", views.register,name="HomePage"),
     path("thanks/", views.thanks,name="thanks"),
     path("product_form/", views.product_form,name="product_form"),
